@@ -1,0 +1,159 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:500,700);
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background: #ffffff;
+    padding: 35px 70px;
+}
+
+.space {
+  perspective: 1500px;
+  width: 525px;
+}
+
+.card {
+  position: relative;
+  border-radius: 8px;
+  background: #32325d;
+  width: 525px;
+  transform: rotate3d(.5,.866,0,15deg) rotate(-1deg);
+  box-shadow:
+    -27.1px 62.5px 125px -25px rgba(50,50,93,.5), 
+    -16.2px 37.5px 75px -37.5px rgba(0,0,0,.6);
+}
+
+.code-snippet {
+  padding: 25px 30px;  
+}
+
+.card-shine {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to top right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.5) 70%,#fff);
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+/* PrismJS 1.15.0
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+clike+javascript */
+/**
+ * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/chriskempson/tomorrow-theme
+ * @author Rose Pritchard
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #e6ebf1;
+  font-family: 'Source Code Pro', Consolas, Menlo, monospace;
+  font-size: 14px;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.3;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+
+}
+
+.token.comment,
+.token.block-comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #999;
+}
+
+.token.punctuation {
+	color: #ccc;
+}
+
+.token.tag,
+.token.attr-name,
+.token.namespace,
+.token.deleted {
+	color: #e2777a;
+}
+
+.token.function-name {
+	color: #6196cc;
+}
+
+.token.boolean,
+.token.number,
+.token.function {
+	color: #f08d49;
+}
+
+.token.property,
+.token.class-name,
+.token.constant,
+.token.symbol {
+	color: #f8c555;
+}
+
+.token.selector,
+.token.important,
+.token.atrule,
+.token.builtin {
+	color: #cc99cd;
+}
+
+.token.string,
+.token.char,
+.token.attr-value,
+.token.regex,
+.token.variable {
+	color: #7ec699;
+}
+
+.token.entity,
+.token.url {
+	color: #67cdcc;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+.token.inserted {
+	color: green;
+}
+
+.token.function,
+.token.constant,
+.token.boolean {
+  color: #45b2e8;
+}
+
+.token.keyword,
+.token.operator {
+  color: #7795f8;
+}
+
+.token.function,
+.token.keyword {
+  font-weight: 600;
+}
