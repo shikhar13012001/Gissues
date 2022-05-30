@@ -23,3 +23,4 @@ terminal.setReaderDisplay({ type: 'cart', cart });`;
 const CodeCardComponent = () => {
   return <CodeCard code={codeToDisplayInCard} language={"javascript"} />;
 };
+export default CodeCardComponent;
