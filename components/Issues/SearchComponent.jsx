@@ -7,15 +7,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import _ from "lodash";
 import SearchContext from "./IssueContext";
 export default function SearchIssues() {
-  const { setSearchData } = React.useContext(SearchContext);
+  const { setSearchData,handleSearch } = React.useContext(SearchContext);
   const handleChange = _.debounce((e) => {
-    e.preventDefault();
-    console.log(e.target.value);
+    e.preventDefault(); 
     setSearchData((prev) => ({ ...prev, keyword: e.target.value }));
   }, 500);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+   
   return (
     <Paper
       component="form"
@@ -27,7 +24,7 @@ export default function SearchIssues() {
         mb: 5,
         border: "2px solid black",
       }}
-      onSubmit={handleSubmit}
+      onSubmit={handleSearch}
     >
       <IconButton sx={{ p: "10px" }} aria-label="menu">
         <MenuIcon />

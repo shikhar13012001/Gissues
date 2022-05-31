@@ -8,9 +8,11 @@ import SearchIssues from "../components/Issues/SearchComponent";
 import LabelSelect from "../components/Issues/LabelSelect";
 import SearchContext from "../components/Issues/IssueContext";
 import LanguageSelect from "../components/Issues/LanguageSelect";
-const IssuesPage = () => { 
+import { RiFilter2Fill } from "react-icons/ri";
+import { query } from "../utils/index";
+const IssuesPage = () => {
   const [searchData, setSearchData] = React.useState({});
-  console.log(searchData)
+ 
   const { loading, error, data, refetch, networkStatus } = useQuery(
     GET_ISSUES,
     {
@@ -21,11 +23,15 @@ const IssuesPage = () => {
       },
     }
   );
-
+  const handleSearch = () => {
+    refetch({
+      query: query(searchData),
+    });
+  };
   if (networkStatus === NetworkStatus.refetch) return "Refetching!";
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-  console.log(data);
+ 
   const { search } = data;
   const { edges } = search;
 
@@ -34,10 +40,15 @@ const IssuesPage = () => {
       <Typography variant="h3" sx={{ m: 5 }}>
         Search Issues
       </Typography>
-      <SearchContext.Provider value={{ searchData, setSearchData }}>
+      <SearchContext.Provider
+        value={{ searchData, setSearchData, handleSearch }}
+      >
         <SearchIssues />
         <LanguageSelect />
         <LabelSelect />
+        <Button variant="contained" endIcon={<RiFilter2Fill />} disableElevation sx={{ mt: 2,mb:2 }} onClick={handleSearch}>
+          Apply filters
+        </Button>
       </SearchContext.Provider>
       {edges.map(({ node }, key) => {
         return <Issues node={node} key={key} />;

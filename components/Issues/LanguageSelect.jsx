@@ -5,14 +5,12 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Languages from "programing-language-names";
 import SearchContext from "./IssueContext";
 export default function FreeSolo() {
-    const {setSearchData} = React.useContext(SearchContext);
-  console.log(Object.keys(Languages).map((option) => option));
+    const {setSearchData} = React.useContext(SearchContext); 
   const options = Object.keys(Languages).map((option) =>(Languages[option]));
   // remove duplicates from options
     const uniqueOptions = [...new Set(options)];
     const handleChange = (e) => {
-        e.preventDefault();
-        console.log(e.target.value);
+        e.preventDefault(); 
         setSearchData((prev) => ({ ...prev, language: e.target.value }));
     }
   return (
