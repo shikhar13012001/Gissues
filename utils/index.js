@@ -11,4 +11,6 @@ export const query = (obj) => {
 
 export const CONSTANTS = {
   COLLECTION_NAME: "issues",
+  DEFAULT_QUERY:
+    'label:"good first issue" language:JavaScript updated:>2021-12-01 state:open',
 };

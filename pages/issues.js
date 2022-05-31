@@ -10,24 +10,44 @@ import SearchContext from "../components/Issues/IssueContext";
 import LanguageSelect from "../components/Issues/LanguageSelect";
 import { RiFilter2Fill } from "react-icons/ri";
 import { query } from "../utils/index";
+import { doc, getDoc } from "firebase/firestore";
+import { CONSTANTS } from "../utils/index";
+import { useDocument } from "react-firebase-hooks/firestore";
+import { database, auth } from "../firebase.config";
+import { useAuthState } from "react-firebase-hooks/auth";
+import BookmarkContext from "../components/Issues/BookmarkContext";
 const IssuesPage = () => {
   const [searchData, setSearchData] = React.useState({});
   const [showFilter, setFilter] = React.useState(false);
+  // const [bookmarks, setBookmarks] = React.useState([]);
+
+  const [user,userLoading] = useAuthState(auth);
+  const collectionRef = !userLoading&&doc(
+    database,
+    CONSTANTS.COLLECTION_NAME,
+    user?.uid
+  );
+  const [value] = useDocument(collectionRef, {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
+  const bookmarks=value?value.data():[]
+   
   const { loading, error, data, refetch, networkStatus } = useQuery(
     GET_ISSUES,
     {
       notifyOnNetworkStatusChange: true,
       variables: {
-        query:
-          'label:"good first issue" language:JavaScript updated:>2021-12-01 state:open',
+        query: CONSTANTS.DEFAULT_QUERY,
       },
     }
   );
+
   const handleSearch = () => {
     refetch({
       query: query(searchData),
     });
   };
+
   if (networkStatus === NetworkStatus.refetch) return "Refetching!";
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -70,9 +90,11 @@ const IssuesPage = () => {
           </React.Fragment>
         )}
       </SearchContext.Provider>
-      {edges.map(({ node }, key) => {
-        return <Issues node={node} key={key} />;
-      })}
+      <BookmarkContext.Provider value={{ bookmarks }}>
+        {edges.map(({ node }, key) => {
+          return <Issues node={node} key={key} />;
+        })}
+      </BookmarkContext.Provider>
     </Box>
   );
 };
