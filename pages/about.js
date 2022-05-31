@@ -1,9 +1,10 @@
-import { Stack, Typography,Paper } from "@mui/material";
+import { Stack, Typography, Paper } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
 import Contact from "../public/Contact.png";
 import Image from "next/image";
-import Home from "../public/home.png"
+import Home from "../public/home.png";
+import MarqueeComponent from "../components/About/index";
 const AboutUs = () => {
   return (
     <Container>
@@ -15,7 +16,19 @@ const AboutUs = () => {
         GitHub. It is built for new developers who want to learn more about
         GitHub and open source.
       </Typography>
-      <Paper sx={{ m: 5,mb:8, width: "80%",height:500, fontFamily: "monospace",display:'flex',margin:'auto'}} elevation={12} className="about-us-image"/>
+      <Paper
+        sx={{
+          m: 5,
+          mb: 8,
+          width: "80%",
+          height: 500,
+          fontFamily: "monospace",
+          display: "flex",
+          margin: "auto",
+        }}
+        elevation={12}
+        className="about-us-image"
+      />
 
       <Stack direction={"row"}>
         <Image src={Contact} width={400} alt="Contact" />
@@ -24,6 +37,10 @@ const AboutUs = () => {
           <strong>never_contact_me@gmail.com</strong>
         </Typography>
       </Stack>
+      <Typography variant="h6" sx={{ m: 5, fontFamily: "monospace" }}>
+        This project is built on
+      </Typography>
+      <MarqueeComponent />
       <Typography
         variant="body1"
         sx={{ ml: 5, mt: 5, fontFamily: "monospace" }}
