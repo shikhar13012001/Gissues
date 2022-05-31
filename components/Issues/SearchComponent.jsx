@@ -11,7 +11,7 @@ export default function SearchIssues() {
   const handleChange = _.debounce((e) => {
     e.preventDefault();
     console.log(e.target.value);
-    setSearchData({ keyword: e.target.value });
+    setSearchData((prev) => ({ ...prev, keyword: e.target.value }));
   }, 500);
   const handleSubmit = (e) => {
     e.preventDefault();

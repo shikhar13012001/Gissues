@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import { GET_ISSUES } from "../graphql/queries";
 import { NetworkStatus } from "@apollo/client";
 import SearchIssues from "../components/Issues/SearchComponent";
+import LabelSelect from "../components/Issues/LabelSelect";
 import SearchContext from "../components/Issues/IssueContext";
 const IssuesPage = () => {
   const [issues, setIssues] = React.useState([]);
@@ -29,16 +30,17 @@ const IssuesPage = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
-        <Typography variant="h3" sx={{ m: 5 }}>
-          Search Issues
-        </Typography>
-        <SearchContext.Provider value={{ searchData, setSearchData }}>
+      <Typography variant="h3" sx={{ m: 5 }}>
+        Search Issues
+      </Typography>
+      <SearchContext.Provider value={{ searchData, setSearchData }}>
         <SearchIssues />
-        </SearchContext.Provider>
-        {edges.map(({ node }, key) => {
-          return <Issues node={node} key={key} />;
-        })}
-      </Box>
+        <LabelSelect />
+      </SearchContext.Provider>
+      {edges.map(({ node }, key) => {
+        return <Issues node={node} key={key} />;
+      })}
+    </Box>
   );
 };
 export default IssuesPage;
