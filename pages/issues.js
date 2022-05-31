@@ -30,7 +30,7 @@ const IssuesPage = () => {
   const [value] = useDocument(collectionRef, {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
-  const bookmarks=value?value.data():[]
+  const {bookmarks}=value?value.data():[]
    
   const { loading, error, data, refetch, networkStatus } = useQuery(
     GET_ISSUES,
