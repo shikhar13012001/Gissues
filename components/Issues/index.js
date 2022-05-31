@@ -9,19 +9,25 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.config";
 import Image from "next/image";
 import { database } from "../../firebase.config";
-import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { doc,getDoc,setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { CONSTANTS } from "../../utils";
-import BookmarkContext from "./BookmarkContext";
-import { ContentPasteOffSharp } from "@mui/icons-material";
+import BookmarkContext from "./BookmarkContext"; 
 const IssueCardComponent = ({ node }) => {
   const { bookmarks } = React.useContext(BookmarkContext);
   const [user, loading, error] = useAuthState(auth);
-  const [bookmark, setBookmark] = React.useState(bookmarks.includes(node.id)); 
+  const [bookmark, setBookmark] = React.useState(bookmarks?.includes(node.id)); 
   if (loading) return <p>Loading...</p>;
   const handleBookmark = async () => {
     setBookmark(!bookmark);
     const collectionRef = doc(database, CONSTANTS.COLLECTION_NAME, user.uid);
     try {
+      const docSnap=await getDoc(collectionRef);
+      // console.log(docSnap.exists());
+      if(!docSnap.exists()){
+        console.log("wda")
+        await setDoc(collectionRef,{bookmarks:[node.id]});
+        return;
+      }
       // set with custom id
       if (!bookmark) {
         await updateDoc(collectionRef, {
