@@ -27,6 +27,15 @@ img.image-set-profile {
   border-radius: 50%;
 }
 
-img.image-profile{
+img.image-profile {
   border-radius: 50%;
+}
+div.about-us-image {
+  background-image: url("../public/home.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 10px 37px 94px 0px rgba(0, 245, 143, 0.49);
+  -webkit-box-shadow: 10px 37px 94px 0px rgba(0, 245, 143, 0.49);
+  -moz-box-shadow: 10px 37px 94px 0px rgba(0, 245, 143, 0.49);
 }
