@@ -8,12 +8,40 @@ import { BsBookmarkCheckFill } from "react-icons/bs";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.config";
 import Image from "next/image";
+import { database } from "../../firebase.config";
+import {
+  doc,
+  setDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
+import { CONSTANTS } from "../../utils";
 const IssueCardComponent = ({ node }) => {
+ 
+  const [user, loading, error] = useAuthState(auth);
   const [bookmark, setBookmark] = React.useState(false);
-  const handleBookmark = () => {
+  if (loading) return <p>Loading...</p>;
+  const handleBookmark = async () => {
     setBookmark(!bookmark);
+    const collectionRef = doc(database, CONSTANTS.COLLECTION_NAME, user.uid);
+    try {
+      // set with custom id
+      if(!bookmark){
+      await updateDoc(collectionRef, {
+        bookmarks:arrayUnion(node.id)
+      });
+    }
+    else
+    {
+      await updateDoc(collectionRef, {
+        bookmarks:arrayRemove(node.id)
+      });
+    }
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
-  const [user,loading,error] = useAuthState(auth);
 
   const { repository, url, title, number, labels, updatedAt } = node;
 
@@ -97,14 +125,14 @@ const IssueCardComponent = ({ node }) => {
           variant="outlined"
           color="primary"
           endIcon={bookmark ? <BsBookmarkCheckFill /> : <BiBookmarks />}
-           disableElevation
-           disabled={!!!user}
+          disableElevation
+          disabled={!!!user}
           sx={{
             mt: 3,
             padding: "10px 15px",
             color: "black",
             boxShadow: "none",
-            backgroundColor: bookmark ? "yellow" : "white",
+            backgroundColor:  "white",
           }}
           onClick={handleBookmark /* add bookmark */}
         >

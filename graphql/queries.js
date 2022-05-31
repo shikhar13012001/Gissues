@@ -15,6 +15,7 @@ export const GET_ISSUES = gql`
       edges {
         node {
           ... on Issue {
+            id
             repository {
               owner {
                 login
