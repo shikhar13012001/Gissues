@@ -26,6 +26,7 @@ const AuthLinks = () => {
           startIcon={<BsGithub />}
           sx={{ backgroundColor: "black", color: "white", p: "10px 15px" }}
           onClick={handleGitHubLogin}
+          disableElevation
         >
           Login
         </Button>

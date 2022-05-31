@@ -54,7 +54,7 @@ export default function PopoverPopupState({ user }) {
                 fullWidth
                 variant="outlined"
                 color="primary"
-                sx={{mb:1}}
+                sx={{ mb: 1 }}
               >
                 0 issues Bookmarked
               </Button>
@@ -63,7 +63,7 @@ export default function PopoverPopupState({ user }) {
                 disableElevation
                 fullWidth
                 variant="contained"
-                color="primary"
+                sx={{ backgroundColor: "#2dba5f" }}
                 onClick={handleLogout}
               >
                 Logout

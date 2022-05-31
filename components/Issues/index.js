@@ -5,14 +5,18 @@ import { BiGitPullRequest, BiBookmarks } from "react-icons/bi";
 import { VscIssues } from "react-icons/vsc";
 import { MdUpdate } from "react-icons/md";
 import { BsBookmarkCheckFill } from "react-icons/bs";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../firebase.config";
 import Image from "next/image";
 const IssueCardComponent = ({ node }) => {
   const [bookmark, setBookmark] = React.useState(false);
   const handleBookmark = () => {
     setBookmark(!bookmark);
   };
+  const [user,loading,error] = useAuthState(auth);
+
   const { repository, url, title, number, labels, updatedAt } = node;
- 
+
   if (!repository) {
     return null;
   }
@@ -93,6 +97,8 @@ const IssueCardComponent = ({ node }) => {
           variant="outlined"
           color="primary"
           endIcon={bookmark ? <BsBookmarkCheckFill /> : <BiBookmarks />}
+           disableElevation
+           disabled={!!!user}
           sx={{
             mt: 3,
             padding: "10px 15px",
