@@ -7,9 +7,10 @@ import { NetworkStatus } from "@apollo/client";
 import SearchIssues from "../components/Issues/SearchComponent";
 import LabelSelect from "../components/Issues/LabelSelect";
 import SearchContext from "../components/Issues/IssueContext";
-const IssuesPage = () => {
-  const [issues, setIssues] = React.useState([]);
+import LanguageSelect from "../components/Issues/LanguageSelect";
+const IssuesPage = () => { 
   const [searchData, setSearchData] = React.useState({});
+  console.log(searchData)
   const { loading, error, data, refetch, networkStatus } = useQuery(
     GET_ISSUES,
     {
@@ -35,6 +36,7 @@ const IssuesPage = () => {
       </Typography>
       <SearchContext.Provider value={{ searchData, setSearchData }}>
         <SearchIssues />
+        <LanguageSelect />
         <LabelSelect />
       </SearchContext.Provider>
       {edges.map(({ node }, key) => {

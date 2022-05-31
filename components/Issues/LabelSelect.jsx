@@ -7,10 +7,11 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import CloseIcon from "@mui/icons-material/Close";
 import DoneIcon from "@mui/icons-material/Done";
 import Autocomplete, { autocompleteClasses } from "@mui/material/Autocomplete";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import InputBase from "@mui/material/InputBase";
 import Chip from "@mui/material/Chip";
 import { Box } from "@mui/material";
+import { ButtonBase } from "@mui/material";
 import SearchContext from "./IssueContext";
 
 const StyledAutocompletePopper = styled("div")(({ theme }) => ({
@@ -94,24 +95,27 @@ const StyledInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-// const Button = styled(ButtonBase)(({ theme }) => ({
+const Button = styled(ButtonBase)(({ theme }) => ({
 
-//   width: "100%",
-//   textAlign: "left",
-//   paddingBottom: 8,
-//   color: theme.palette.mode === "light" ? "#586069" : "#8b949e",
-//   fontWeight: 600,
-//   "&:hover,&:focus": {
-//     color: theme.palette.mode === "light" ? "#0366d6" : "#58a6ff",
-//   },
-//   "& span": {
-//     width: "100%",
-//   },
-//   "& svg": {
-//     width: 16,
-//     height: 16,
-//   },
-// }));
+  width: "100%",
+  textAlign: "left",
+  paddingBottom: 8,
+  paddingTop: 8,
+  fontSize:18,
+
+  color: theme.palette.mode === "light" ? "#586069" : "#8b949e",
+  fontWeight: 600,
+  "&:hover,&:focus": {
+    color: theme.palette.mode === "light" ? "#0366d6" : "#58a6ff",
+  },
+  "& span": {
+    width: "100%",
+  },
+  "& svg": {
+    width: 16,
+    height: 16,
+  },
+}));
 
 export default function GitHubLabel() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -127,8 +131,7 @@ export default function GitHubLabel() {
   };
 
   const handleClose = () => {
-    setValue(pendingValue);
-    console.log(pendingValue);
+    setValue(pendingValue); 
     setSearchData((prevState)=>({...prevState,labels:pendingValue}));
     if (anchorEl) {
       anchorEl.focus();
@@ -140,16 +143,18 @@ export default function GitHubLabel() {
   const id = open ? "github-label" : undefined;
 
   return (
-    <Box sx={{mb:4}}>
+    <Box sx={{ mb: 4 }}>
       <Box sx={{ fontSize: 13 }}>
         <Button
           aria-describedby={id}
           disableRipple
-          endIcon={<SettingsIcon />}
           onClick={handleClick}
-          sx={{ width: "20em", color: "black",textAlign:'left' }}
+          sx={{ color: "black" }}
         >
-          Labels
+          <span>
+            {" "}
+            Labels <SettingsIcon />{" "}
+          </span>
         </Button>{" "}
         <br />
         {value.map((label) => (

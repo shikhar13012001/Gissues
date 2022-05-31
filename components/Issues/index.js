@@ -12,7 +12,7 @@ const IssueCardComponent = ({ node }) => {
     setBookmark(!bookmark);
   };
   const { repository, url, title, number, labels, updatedAt } = node;
-  console.log(node);
+ 
   if (!repository) {
     return null;
   }
@@ -26,7 +26,7 @@ const IssueCardComponent = ({ node }) => {
         border: "2px solid black",
         padding: 2,
         borderRadius: 1,
-        mb: 3,
+        mb: 1,
       }}
     >
       <Grid item xs={12}>

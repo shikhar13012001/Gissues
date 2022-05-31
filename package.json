@@ -20,6 +20,8 @@
     "lodash": "^4.17.21",
     "next": "12.1.6",
     "prismjs": "^1.28.0",
+    "programing-language-names": "^2.0.8",
+    "programming-languages-logos": "0.0.3",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-icons": "^4.3.1"
