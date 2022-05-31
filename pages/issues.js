@@ -12,7 +12,7 @@ import { RiFilter2Fill } from "react-icons/ri";
 import { query } from "../utils/index";
 const IssuesPage = () => {
   const [searchData, setSearchData] = React.useState({});
- 
+  const [showFilter, setFilter] = React.useState(false);
   const { loading, error, data, refetch, networkStatus } = useQuery(
     GET_ISSUES,
     {
@@ -31,7 +31,7 @@ const IssuesPage = () => {
   if (networkStatus === NetworkStatus.refetch) return "Refetching!";
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
- 
+
   const { search } = data;
   const { edges } = search;
 
@@ -44,11 +44,31 @@ const IssuesPage = () => {
         value={{ searchData, setSearchData, handleSearch }}
       >
         <SearchIssues />
-        <LanguageSelect />
-        <LabelSelect />
-        <Button variant="contained" endIcon={<RiFilter2Fill />} disableElevation sx={{ mt: 2,mb:2 }} onClick={handleSearch}>
-          Apply filters
-        </Button>
+        {
+          <Button
+            variant={showFilter ? "outlined" : "contained"}
+            disableElevation
+            sx={{ mb: 2 }}
+            onClick={() => setFilter(!showFilter)}
+          >
+            <RiFilter2Fill /> {showFilter ? "HideFilters" : "Filter Issues"}
+          </Button>
+        }
+        {showFilter && (
+          <React.Fragment>
+            <LanguageSelect />
+            <LabelSelect />
+            <Button
+              variant="contained"
+              endIcon={<RiFilter2Fill />}
+              disableElevation
+              sx={{ mt: 2, mb: 2 }}
+              onClick={handleSearch}
+            >
+              Apply filters
+            </Button>
+          </React.Fragment>
+        )}
       </SearchContext.Provider>
       {edges.map(({ node }, key) => {
         return <Issues node={node} key={key} />;

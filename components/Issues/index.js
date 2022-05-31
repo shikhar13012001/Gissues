@@ -26,7 +26,7 @@ const IssueCardComponent = ({ node }) => {
         border: "2px solid black",
         padding: 2,
         borderRadius: 1,
-        mb: 1,
+        mb: 4,
       }}
     >
       <Grid item xs={12}>

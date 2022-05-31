@@ -1,24 +1,35 @@
 import React from "react";
-import { Button ,Stack} from "@mui/material";
+import { Typography, Button, Stack, Box } from "@mui/material";
 import Link from "next/link";
+import { app, auth } from "../../firebase.config";
+import { BsGithub } from "react-icons/bs";
+import { useAuthState } from "react-firebase-hooks/auth";
+import Image from "next/image";
+import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import Popper from "./LogOutPopover";
 const AuthLinks = () => {
+  const GithubAuth = new GithubAuthProvider();
+  const handleGitHubLogin = async () => {
+    const credentials = await signInWithPopup(auth, GithubAuth);
+    console.log(credentials.user);
+  };
+  const [user, loading, error] = useAuthState(auth);
+  if (loading) return <p>Loading...</p>;
+  console.log(user);
   return (
     <Stack direction={"row"} spacing={5}>
-      <Link href="/register">
+      {user ? (
+        <Popper user={user} />
+      ) : (
         <Button
-          sx={{color: "black", p: "10px 15px" }}
-        >
-          Register
-        </Button>
-      </Link>
-      <Link href="/login">
-        <Button
-        variant="contained"
+          variant="contained"
+          startIcon={<BsGithub />}
           sx={{ backgroundColor: "black", color: "white", p: "10px 15px" }}
+          onClick={handleGitHubLogin}
         >
           Login
         </Button>
-      </Link>
+      )}
     </Stack>
   );
 };

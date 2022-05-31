@@ -7,11 +7,8 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-  useQuery,
-  gql,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-
 function MyApp({ Component, pageProps }) {
   const URI = "https://api.github.com/graphql";
   const httpLink = createHttpLink({
@@ -33,6 +30,7 @@ function MyApp({ Component, pageProps }) {
     cache: new InMemoryCache(),
   });
 
+  
   return (
     <Container sx={{ mt: 3 }}>
       <NavBar />
