@@ -58,6 +58,7 @@ export const GET_PULL_REQUESTS = gql`
   query MyGetPullRequests($user: String!, $after: String) {
     user(login: $user) {
       avatarUrl
+      bio
       pullRequests(
         first: 10
         after: $after

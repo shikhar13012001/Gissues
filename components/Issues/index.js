@@ -12,6 +12,7 @@ import { database } from "../../firebase.config";
 import { doc,getDoc,setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { CONSTANTS } from "../../utils";
 import BookmarkContext from "./BookmarkContext"; 
+import { Pagination } from "@mui/material";
 const IssueCardComponent = ({ node }) => {
   const { bookmarks } = React.useContext(BookmarkContext);
   const [user, loading, error] = useAuthState(auth);

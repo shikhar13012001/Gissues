@@ -3,7 +3,6 @@ import { Container } from "@mui/system";
 import React from "react";
 import Contact from "../public/Contact.png";
 import Image from "next/image";
-import Home from "../public/home.png";
 import MarqueeComponent from "../components/About/index";
 const AboutUs = () => {
   return (
