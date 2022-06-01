@@ -21,17 +21,15 @@ const IssuesPage = () => {
   const [showFilter, setFilter] = React.useState(false);
   // const [bookmarks, setBookmarks] = React.useState([]);
 
-  const [user,userLoading] = useAuthState(auth);
-  const collectionRef = !userLoading&&user&&doc(
-    database,
-    CONSTANTS.COLLECTION_NAME,
-    user?.uid
-  );
+  const [user, userLoading] = useAuthState(auth);
+  const collectionRef =
+    !userLoading && user && doc(database, CONSTANTS.COLLECTION_NAME, user?.uid);
   const [value] = useDocument(collectionRef, {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
-  const {bookmarks}=!!value&&value.data()?value.data():{bookmarks:[]};
-  console.log(bookmarks); 
+  const { bookmarks } =
+    !!value && value.data() ? value.data() : { bookmarks: [] };
+  console.log(bookmarks);
   const { loading, error, data, refetch, networkStatus } = useQuery(
     GET_ISSUES,
     {

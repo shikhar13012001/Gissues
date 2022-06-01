@@ -5,14 +5,14 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Languages from "programing-language-names";
 import SearchContext from "./IssueContext";
 export default function FreeSolo() {
-    const {setSearchData} = React.useContext(SearchContext); 
-  const options = Object.keys(Languages).map((option) =>(Languages[option]));
+  const { setSearchData } = React.useContext(SearchContext);
+  const options = Object.keys(Languages).map((option) => Languages[option]);
   // remove duplicates from options
-    const uniqueOptions = [...new Set(options)];
-    const handleChange = (e) => {
-        e.preventDefault(); 
-        setSearchData((prev) => ({ ...prev, language: e.target.value }));
-    }
+  const uniqueOptions = [...new Set(options)];
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchData((prev) => ({ ...prev, language: e.target.value }));
+  };
   return (
     <Stack spacing={2} sx={{ width: 300 }}>
       <Autocomplete
@@ -35,5 +35,3 @@ export default function FreeSolo() {
     </Stack>
   );
 }
- 
- 

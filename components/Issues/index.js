@@ -9,22 +9,29 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.config";
 import Image from "next/image";
 import { database } from "../../firebase.config";
-import { doc,getDoc,setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
 import { CONSTANTS } from "../../utils";
-import BookmarkContext from "./BookmarkContext";  
+import BookmarkContext from "./BookmarkContext";
 const IssueCardComponent = ({ node }) => {
   const { bookmarks } = React.useContext(BookmarkContext);
   const [user, loading] = useAuthState(auth);
-  const [bookmark, setBookmark] = React.useState(bookmarks?.includes(node.id)); 
+  const [bookmark, setBookmark] = React.useState(bookmarks?.includes(node.id));
   if (loading) return <p>Loading...</p>;
   const handleBookmark = async () => {
     setBookmark(!bookmark);
     const collectionRef = doc(database, CONSTANTS.COLLECTION_NAME, user.uid);
     try {
-      const docSnap=await getDoc(collectionRef);
+      const docSnap = await getDoc(collectionRef);
       // console.log(docSnap.exists());
-      if(!docSnap.exists()){ 
-        await setDoc(collectionRef,{bookmarks:[node.id]});
+      if (!docSnap.exists()) {
+        await setDoc(collectionRef, { bookmarks: [node.id] });
         return;
       }
       // set with custom id
@@ -38,7 +45,7 @@ const IssueCardComponent = ({ node }) => {
         });
       }
     } catch (e) {
-     // console.error("Error adding document: ", e);
+      // console.error("Error adding document: ", e);
     }
   };
 

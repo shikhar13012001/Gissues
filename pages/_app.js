@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
   });
   const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
-    const token = "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";
+    const token = process.env.GITHUB_API_GRAPHQL_KEY;
     // return the headers to the context so httpLink can read them
     return {
       headers: {
@@ -30,7 +30,6 @@ function MyApp({ Component, pageProps }) {
     cache: new InMemoryCache(),
   });
 
-  
   return (
     <Container sx={{ mt: 3 }}>
       <NavBar />

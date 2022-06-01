@@ -13,15 +13,13 @@ const ErrorPage = () => {
         alignItems: "center",
       }}
     >
-      <Typography variant="h3" sx={{ textAlign:'center', m: 5, fontWeight: "bold" }}>
+      <Typography
+        variant="h3"
+        sx={{ textAlign: "center", m: 5, fontWeight: "bold" }}
+      >
         404! Oops! Page not found.
       </Typography>
-      <Image
-        src={Error}
-        width={400}
-        height={400}
-        alt="Error" 
-      />
+      <Image src={Error} width={400} height={400} alt="Error" />
     </Container>
   );
 };

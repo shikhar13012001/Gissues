@@ -44,7 +44,7 @@ export default function PopoverPopupState({ user }) {
             transformOrigin={{
               vertical: "top",
               horizontal: "center",
-            }} 
+            }}
           >
             <Paper sx={{ width: 300, height: 115, p: 2 }}>
               <Button

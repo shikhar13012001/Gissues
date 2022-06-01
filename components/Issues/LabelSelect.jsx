@@ -96,12 +96,11 @@ const StyledInput = styled(InputBase)(({ theme }) => ({
 }));
 
 const Button = styled(ButtonBase)(({ theme }) => ({
-
   width: "100%",
   textAlign: "left",
   paddingBottom: 8,
   paddingTop: 8,
-  fontSize:18,
+  fontSize: 18,
 
   color: theme.palette.mode === "light" ? "#586069" : "#8b949e",
   fontWeight: 600,
@@ -119,20 +118,20 @@ const Button = styled(ButtonBase)(({ theme }) => ({
 
 export default function GitHubLabel() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const {setSearchData}= React.useContext(SearchContext);
+  const { setSearchData } = React.useContext(SearchContext);
   const [value, setValue] = React.useState([]);
   const [pendingValue, setPendingValue] = React.useState([]);
   const theme = useTheme();
 
   const handleClick = (event) => {
     setPendingValue(value);
-    
+
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
-    setValue(pendingValue); 
-    setSearchData((prevState)=>({...prevState,labels:pendingValue}));
+    setValue(pendingValue);
+    setSearchData((prevState) => ({ ...prevState, labels: pendingValue }));
     if (anchorEl) {
       anchorEl.focus();
     }

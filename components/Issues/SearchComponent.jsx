@@ -7,12 +7,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import _ from "lodash";
 import SearchContext from "./IssueContext";
 export default function SearchIssues() {
-  const { setSearchData,handleSearch } = React.useContext(SearchContext);
+  const { setSearchData, handleSearch } = React.useContext(SearchContext);
   const handleChange = _.debounce((e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     setSearchData((prev) => ({ ...prev, keyword: e.target.value }));
   }, 500);
-   
+
   return (
     <Paper
       component="form"

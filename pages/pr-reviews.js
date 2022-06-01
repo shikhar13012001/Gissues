@@ -10,41 +10,40 @@ import PullRequest from "../components/PullRequest";
 import Pagination from "@mui/material/Pagination";
 import GithubGraph from "../components/githubGraph";
 const PRReviews = () => {
-//   const [page, setPage] = React.useState(1);
+  //   const [page, setPage] = React.useState(1);
   const [user] = useAuthState(auth);
   const username = user?.reloadUserInfo?.screenName;
-  const { data, loading,refetch } = useQuery(GET_PULL_REQUESTS, {
+  const { data, loading, refetch } = useQuery(GET_PULL_REQUESTS, {
     variables: {
-      user: username, 
-      after: null
+      user: username,
+      after: null,
     },
   });
   if (loading) return <p>Loading...</p>;
-  if(!user){
-      router.push("/");
-      return;
+  if (!user) {
+    router.push("/");
+    return;
   }
   const { avatarUrl } = data?.user || {};
   const pullRequests = data?.user?.pullRequests?.edges;
   const totalCount = data?.user?.pullRequests?.totalCount;
   const pageCursor = data?.user?.pullRequests?.pageInfo?.endCursor;
- 
-   const handlePagination = (e) => {
-       if(e.target.innerText === "1"){
-           
-           refetch({
-               after:null
-           })
-           return;
-       }
-       refetch({
-           after:pageCursor,
-       })
-   };
+
+  const handlePagination = (e) => {
+    if (e.target.innerText === "1") {
+      refetch({
+        after: null,
+      });
+      return;
+    }
+    refetch({
+      after: pageCursor,
+    });
+  };
   return (
     data?.user && (
       <Container sx={{ mt: 4 }}>
-      <GithubGraph username={username}/>
+        <GithubGraph username={username} />
         <Stack
           direction="row"
           spacing={3}

@@ -3,7 +3,7 @@ import React from "react";
 import { AiFillGithub } from "react-icons/ai";
 import NavLinks from "./NavLinks";
 import AuthLinks from "./AuthLinks";
-const NavBar = () => { 
+const NavBar = () => {
   return (
     <Box sx={{ width: "100%", display: "flex", alignItems: "center", gap: 10 }}>
       <AiFillGithub size={60} />
