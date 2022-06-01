@@ -28,7 +28,7 @@ const PRReviews = () => {
   const pullRequests = data?.user?.pullRequests?.edges;
   const totalCount = data?.user?.pullRequests?.totalCount;
   const pageCursor = data?.user?.pullRequests?.pageInfo?.endCursor;
-   console.log(data);
+ 
    const handlePagination = (e) => {
        if(e.target.innerText === "1"){
            

@@ -24,8 +24,7 @@ const IssueCardComponent = ({ node }) => {
     try {
       const docSnap=await getDoc(collectionRef);
       // console.log(docSnap.exists());
-      if(!docSnap.exists()){
-        console.log("wda")
+      if(!docSnap.exists()){ 
         await setDoc(collectionRef,{bookmarks:[node.id]});
         return;
       }
@@ -40,7 +39,7 @@ const IssueCardComponent = ({ node }) => {
         });
       }
     } catch (e) {
-      console.error("Error adding document: ", e);
+     // console.error("Error adding document: ", e);
     }
   };
 
