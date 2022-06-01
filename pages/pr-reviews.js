@@ -8,7 +8,7 @@ import { Stack, Typography, Box } from "@mui/material";
 import Image from "next/image";
 import PullRequest from "../components/PullRequest";
 import Pagination from "@mui/material/Pagination";
-
+import GithubGraph from "../components/githubGraph";
 const PRReviews = () => {
 //   const [page, setPage] = React.useState(1);
   const [user] = useAuthState(auth);
@@ -44,6 +44,7 @@ const PRReviews = () => {
   return (
     data?.user && (
       <Container sx={{ mt: 4 }}>
+      <GithubGraph username={username}/>
         <Stack
           direction="row"
           spacing={3}

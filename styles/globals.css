@@ -39,3 +39,6 @@ div.about-us-image {
   -webkit-box-shadow: 10px 37px 94px 0px rgba(0, 245, 143, 0.49);
   -moz-box-shadow: 10px 37px 94px 0px rgba(0, 245, 143, 0.49);
 }
+.float-right {
+display: none;
+}
