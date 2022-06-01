@@ -6,9 +6,8 @@ import { GrEmergency } from "react-icons/gr";
 import { RiGitMergeLine } from "react-icons/ri";
 const PullRequest = ({ pr }) => {
   const { node } = pr;
- 
-  const {  mergeable, merged, title, url, bodyText, updatedAt } =
-    node;
+
+  const { mergeable, merged, title, url, bodyText, updatedAt } = node;
   return (
     <Box
       sx={{
