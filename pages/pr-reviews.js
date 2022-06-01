@@ -1,0 +1,64 @@
+import React from "react";
+import { useQuery } from "@apollo/client";
+import { GET_PULL_REQUESTS } from "../graphql/queries";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../firebase.config";
+import { Container } from "@mui/system";
+import { Stack, Typography, Box } from "@mui/material";
+import Image from "next/image";
+import PullRequest from "../components/PullRequest";
+import Pagination from "@mui/material/Pagination";
+
+const PRReviews = () => {
+  const [page, setPage] = React.useState(1);
+  const [user] = useAuthState(auth);
+  const username = user?.reloadUserInfo?.screenName;
+  const { data, loading, error,refetch } = useQuery(GET_PULL_REQUESTS, {
+    variables: {
+      user: username, 
+      after: null
+    },
+  });
+  if (loading) return <p>Loading...</p>;
+ 
+  const { avatarUrl, bio } = data?.user || {};
+  const pullRequests = data?.user?.pullRequests?.edges;
+  const totalCount = data?.user?.pullRequests?.totalCount;
+  const pageCursor = data?.user?.pullRequests?.pageInfo?.endCursor;
+   console.log(data);
+   const handlePagination = (e) => {
+       refetch({
+           after:pageCursor,
+       })
+   };
+  return (
+    data?.user && (
+      <Container>
+        <Stack
+          direction="row"
+          spacing={3}
+          sx={{ display: "flex", alignItems: "center", mb: 4 }}
+        >
+          <Image
+            src={avatarUrl}
+            width={50}
+            height={50}
+            alt="avatar-url"
+            className="image-profile"
+          />
+          <Typography variant="h6" sx={{ fontFamily: "monospace" }}>
+            @{username}
+          </Typography>
+        </Stack>
+        {pullRequests?.map((pr) => (
+          <PullRequest key={pr.node.id} pr={pr} />
+        ))}
+        <Box sx={{ width: "100%", display: "grid", placeContent: "center" }}>
+          <Pagination count={Math.ceil(totalCount/10)} variant="outlined" shape="rounded" onChange={handlePagination}/>
+        </Box>
+      </Container>
+    )
+  );
+};
+
+export default PRReviews;

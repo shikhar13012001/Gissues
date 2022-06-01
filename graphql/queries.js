@@ -20,7 +20,6 @@ export const GET_ISSUES = gql`
               owner {
                 login
                 avatarUrl
-              
               }
               updatedAt
               url
@@ -50,6 +49,38 @@ export const GET_ISSUES = gql`
       pageInfo {
         endCursor
         hasNextPage
+      }
+    }
+  }
+`;
+
+export const GET_PULL_REQUESTS = gql`
+  query MyGetPullRequests($user: String!, $after: String) {
+    user(login: $user) {
+      avatarUrl
+      pullRequests(
+        first: 10
+        after: $after
+        orderBy: { field: CREATED_AT, direction: DESC }
+      ) {
+        edges {
+          node {
+            id
+            mergeable
+            merged
+            mergedAt
+            state
+            title
+            url
+            bodyText
+            updatedAt
+          }
+        }
+        totalCount
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
       }
     }
   }
