@@ -13,7 +13,7 @@ const PRReviews = () => {
 //   const [page, setPage] = React.useState(1);
   const [user] = useAuthState(auth);
   const username = user?.reloadUserInfo?.screenName;
-  const { data, loading, error,refetch } = useQuery(GET_PULL_REQUESTS, {
+  const { data, loading,refetch } = useQuery(GET_PULL_REQUESTS, {
     variables: {
       user: username, 
       after: null
@@ -24,7 +24,7 @@ const PRReviews = () => {
       router.push("/");
       return;
   }
-  const { avatarUrl, bio } = data?.user || {};
+  const { avatarUrl } = data?.user || {};
   const pullRequests = data?.user?.pullRequests?.edges;
   const totalCount = data?.user?.pullRequests?.totalCount;
   const pageCursor = data?.user?.pullRequests?.pageInfo?.endCursor;

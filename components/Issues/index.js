@@ -1,4 +1,4 @@
-import { Typography, Grid, Button, Link, Box, Chip } from "@mui/material";
+import { Typography, Grid, Button } from "@mui/material";
 import React from "react";
 import Labels from "./Lables";
 import { BiGitPullRequest, BiBookmarks } from "react-icons/bi";
@@ -11,11 +11,10 @@ import Image from "next/image";
 import { database } from "../../firebase.config";
 import { doc,getDoc,setDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { CONSTANTS } from "../../utils";
-import BookmarkContext from "./BookmarkContext"; 
-import { Pagination } from "@mui/material";
+import BookmarkContext from "./BookmarkContext";  
 const IssueCardComponent = ({ node }) => {
   const { bookmarks } = React.useContext(BookmarkContext);
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [bookmark, setBookmark] = React.useState(bookmarks?.includes(node.id)); 
   if (loading) return <p>Loading...</p>;
   const handleBookmark = async () => {

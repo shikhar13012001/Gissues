@@ -7,7 +7,7 @@ import { RiGitMergeLine } from "react-icons/ri";
 const PullRequest = ({ pr }) => {
   const { node } = pr;
  
-  const { id, mergeable, merged, state, title, url, bodyText, updatedAt } =
+  const {  mergeable, merged, title, url, bodyText, updatedAt } =
     node;
   return (
     <Box
