@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "push": "git add . && git commit -m \"update\" && git push",
-    "push:commit": "git add . && git commit -m \"update\""
+    "push:commit": "git add . && git commit -m \"update\"",
+    "format": "prettier --write ./**/*.{js,md,mdx}"
   },
   "dependencies": {
     "@apollo/client": "^3.6.5",

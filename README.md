@@ -1,33 +1,37 @@
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+
+![Logo](https://i.ibb.co/YNQBH6G/logo.png)
 
 # Gissues
-
 Gissues is a web application that allows you to search for issues in GitHub. It is built for new developers who want to learn more about GitHub and open source.
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
+
 ## Tech Stack
 
 **Client:**
-`Nextjs`,
-`React`
-, `MaterialUI`, `Apollo/client`, ` Github GraphQL API`
+ ```Nextjs```,
+  ```React```
+, ```MaterialUI```, ```Apollo/client```, ``` Github GraphQL API```
+
+
 
 ## Screenshots
 
-## ![](https://i.ibb.co/FYzMwM0/Screenshot-103.png)
-
-## ![](https://i.ibb.co/5T5bMWv/Screenshot-104.png)
-
-## ![](https://i.ibb.co/hMSkQn5/Screenshot-105.png)
-
-## ![](https://i.ibb.co/K2L3Khr/Screenshot-106.png)
-
-## ![](https://i.ibb.co/BBzWRy5/Screenshot-107.png)
-
-## ![](https://i.ibb.co/SnK2GRg/Screenshot-108.png)
+![](https://i.ibb.co/FYzMwM0/Screenshot-103.png)
+---
+![](https://i.ibb.co/5T5bMWv/Screenshot-104.png)
+---
+![](https://i.ibb.co/hMSkQn5/Screenshot-105.png)
+---
+![](https://i.ibb.co/K2L3Khr/Screenshot-106.png)
+---
+![](https://i.ibb.co/BBzWRy5/Screenshot-107.png)
+---
+![](https://i.ibb.co/SnK2GRg/Screenshot-108.png)
+---
 
 ## Run Locally
 
@@ -55,10 +59,21 @@ Start the development server
   npm run dev
 ```
 
-## Contributing
 
-Contributions are always welcome!
+## Environment Variables
 
-See `contributing.md` for ways to get started.
+To run this project, you will need to add the following environment variables to your .env file
 
-Please adhere to this project's `code of conduct`.
+`GITHUB_API_GRAPHQL_KEY=` 
+
+`FIREBASE_CONFIG_API_KEY=`
+
+`FIREBASE_CONFIG_AUTH_DOMAIN=`
+
+`FIREBASE_CONFIG_STORAGE_BUCKET=`
+
+`FIREBASE_CONFIG_MESSAGING_SENDER_ID=`
+
+`FIREBASE_CONFIG_APP_ID=`
+
+
