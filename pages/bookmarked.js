@@ -45,11 +45,12 @@ const Bookmarked = () => {
         data.nodes.map((item, key) => {
           return <Issues node={item} key={key} />;
         })
-      ) : (<>
-        <Image src={BackPack} width={400} height={400} alt="Backpack" />
-        <Typography variant="h4" className="SpaceFont">
+      ) : (
+        <>
+          <Image src={BackPack} width={400} height={400} alt="Backpack" />
+          <Typography variant="h4" className="SpaceFont">
             You have no bookmarked issues.
-            </Typography>
+          </Typography>
         </>
       )}
     </Container>
