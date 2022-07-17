@@ -9,6 +9,7 @@ import Image from "next/image";
 import PullRequest from "../components/PullRequest";
 import Pagination from "@mui/material/Pagination";
 import GithubGraph from "../components/githubGraph";
+import Loading from "../components/Loading";
 const PRReviews = () => {
   //   const [page, setPage] = React.useState(1);
   const [user] = useAuthState(auth);
@@ -19,7 +20,7 @@ const PRReviews = () => {
       after: null,
     },
   });
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (!user) {
     router.push("/");
     return;

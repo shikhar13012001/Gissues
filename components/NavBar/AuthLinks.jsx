@@ -7,6 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Image from "next/image";
 import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import Popper from "./LogOutPopover";
+import Loading from "../../components/Loading";
 const AuthLinks = () => {
   const GithubAuth = new GithubAuthProvider();
   const handleGitHubLogin = async () => {
@@ -14,7 +15,7 @@ const AuthLinks = () => {
     console.log(credentials.user);
   };
   const [user, loading, error] = useAuthState(auth);
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   console.log(user);
   return (
     <Stack direction={"row"} spacing={5}>

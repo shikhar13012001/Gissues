@@ -86,3 +86,39 @@ export const GET_PULL_REQUESTS = gql`
     }
   }
 `;
+
+export const GET_BOOKMARKS = gql`
+  query MyGetBookmarks($ids: [ID!]!) {
+    nodes(ids: $ids) {
+      ... on Issue {
+        id
+        repository {
+          owner {
+            login
+            avatarUrl
+          }
+          updatedAt
+          url
+          updatedAt
+          name
+          description
+          stargazers {
+            totalCount
+          }
+        }
+        url
+        updatedAt
+        title
+        number
+        labels(first: 100) {
+          edges {
+            node {
+              color
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;

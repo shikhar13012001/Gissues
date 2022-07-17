@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import "../styles/globals.css";
 import "../styles/prism.css";
 import NavBar from "../components/NavBar";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import {
   ApolloClient,
   InMemoryCache,

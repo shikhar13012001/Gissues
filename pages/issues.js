@@ -17,6 +17,7 @@ import { database, auth } from "../firebase.config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import BookmarkContext from "../components/Issues/BookmarkContext";
 import Pagination from "@mui/material/Pagination";
+import Loading from "../components/Loading";
 
 const IssuesPage = () => {
   const [searchData, setSearchData] = React.useState({});
@@ -65,7 +66,7 @@ const IssuesPage = () => {
   };
 
   if (networkStatus === NetworkStatus.refetch) return "Refetching!";
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error :(</p>;
 
   const { search } = data;

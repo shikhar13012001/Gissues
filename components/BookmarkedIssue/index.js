@@ -18,12 +18,10 @@ import {
   arrayRemove,
 } from "firebase/firestore";
 import { CONSTANTS } from "../../utils";
-import BookmarkContext from "./BookmarkContext";
 import Loading from "../../components/Loading";
 const IssueCardComponent = ({ node }) => {
-  const { bookmarks } = React.useContext(BookmarkContext);
   const [user, loading] = useAuthState(auth);
-  const [bookmark, setBookmark] = React.useState(bookmarks?.includes(node.id));
+  const [bookmark, setBookmark] = React.useState(true);
   if (loading) return <Loading />;
   const handleBookmark = async () => {
     setBookmark(!bookmark);

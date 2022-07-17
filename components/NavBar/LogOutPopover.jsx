@@ -10,20 +10,22 @@ import { auth, database } from "../../firebase.config";
 import { doc } from "firebase/firestore";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { CONSTANTS } from "../../utils/index";
+import Link from "next/link";
 
 export default function PopoverPopupState({ user }) {
   const handleLogout = async () => {
     await signOut(auth);
   };
+  
   const [value, loading, error] = useDocument(
     doc(database, CONSTANTS.COLLECTION_NAME, user.uid),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
- 
-  const bookmarked=value?.data()?.bookmarks?.length||0;
- 
+
+  const bookmarked = value?.data()?.bookmarks?.length || 0;
+
   // find total bookmarked by user
 
   return (
@@ -62,6 +64,7 @@ export default function PopoverPopupState({ user }) {
             }}
           >
             <Paper sx={{ width: 300, height: 115, p: 2 }}>
+              <Link href="/bookmarked">
               <Button
                 disableRipple
                 disableElevation
@@ -72,6 +75,7 @@ export default function PopoverPopupState({ user }) {
               >
                 {bookmarked} issues Bookmarked
               </Button>
+              </Link>
               <Button
                 disableRipple
                 disableElevation

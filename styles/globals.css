@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap");
+
 html,
 body {
   padding: 0;
@@ -14,9 +16,12 @@ a {
 }
 
 * {
+  font-family: "Space Grotesk", sans-serif;
   box-sizing: border-box;
 }
-
+.SpaceFont{
+  font-family: "Space Grotesk", sans-serif !important;
+}
 .labels {
   display: flex;
   max-width: 60%;
