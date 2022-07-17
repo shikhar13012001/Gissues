@@ -1,6 +1,8 @@
 export const query = (obj) => {
   const { labels, keyword, language, state, updated } = obj;
-  const labelString = labels.map(({ name }) => `label:"${name}"`).join(" ");
+  const labelString = (labels || [])
+    .map(({ name }) => `label:"${name}"`)
+    .join(" ");
   const keywordString = keyword ? `${keyword}` : "";
   const languageString = language ? `language:${language}` : "";
   const stateString = state ? `state:${state}` : "";

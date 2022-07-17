@@ -16,9 +16,12 @@ import { useDocument } from "react-firebase-hooks/firestore";
 import { database, auth } from "../firebase.config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import BookmarkContext from "../components/Issues/BookmarkContext";
+import Pagination from "@mui/material/Pagination";
+
 const IssuesPage = () => {
   const [searchData, setSearchData] = React.useState({});
   const [showFilter, setFilter] = React.useState(false);
+  const [page, setPage] = React.useState(1);
   // const [bookmarks, setBookmarks] = React.useState([]);
 
   const [user, userLoading] = useAuthState(auth);
@@ -29,7 +32,7 @@ const IssuesPage = () => {
   });
   const { bookmarks } =
     !!value && value.data() ? value.data() : { bookmarks: [] };
-  console.log(bookmarks);
+
   const { loading, error, data, refetch, networkStatus } = useQuery(
     GET_ISSUES,
     {
@@ -39,11 +42,26 @@ const IssuesPage = () => {
       },
     }
   );
-
-  const handleSearch = () => {
+  const totalCount = data?.search?.issueCount;
+  const pageCursor = data?.search?.pageInfo?.endCursor;
+  const handleSearch = (e) => {
+    e.preventDefault();
     refetch({
       query: query(searchData),
     });
+  };
+  console.log("searchData", searchData);
+  const handlePagination = (e) => {
+    if (e.target.innerText === "1") {
+      refetch({
+        after: null,
+      });
+      return;
+    }
+    refetch({
+      after: pageCursor,
+    });
+    setPage(Number(e.target.innerText));
   };
 
   if (networkStatus === NetworkStatus.refetch) return "Refetching!";
@@ -93,6 +111,15 @@ const IssuesPage = () => {
           return <Issues node={node} key={key} />;
         })}
       </BookmarkContext.Provider>
+      <Box sx={{ width: "100%", display: "grid", placeContent: "center" }}>
+        <Pagination
+          count={Math.ceil(totalCount / 10)}
+          variant="outlined"
+          shape="rounded"
+          onChange={handlePagination}
+          page={page}
+        />
+      </Box>
     </Box>
   );
 };

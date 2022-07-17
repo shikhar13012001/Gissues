@@ -7,7 +7,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import _ from "lodash";
 import SearchContext from "./IssueContext";
 export default function SearchIssues() {
-  const { setSearchData, handleSearch } = React.useContext(SearchContext);
+  const { setSearchData, searchData, handleSearch } =
+    React.useContext(SearchContext);
+
   const handleChange = _.debounce((e) => {
     e.preventDefault();
     setSearchData((prev) => ({ ...prev, keyword: e.target.value }));
@@ -33,6 +35,7 @@ export default function SearchIssues() {
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Issues"
         inputProps={{ "aria-label": "search google maps" }}
+        defaultValue={searchData.keyword}
         onChange={handleChange}
       />
       <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">

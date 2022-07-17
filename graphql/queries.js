@@ -45,7 +45,7 @@ export const GET_ISSUES = gql`
           }
         }
       }
-
+      issueCount
       pageInfo {
         endCursor
         hasNextPage
