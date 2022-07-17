@@ -10,7 +10,7 @@ import SearchContext from "../components/Issues/IssueContext";
 import LanguageSelect from "../components/Issues/LanguageSelect";
 import { RiFilter2Fill } from "react-icons/ri";
 import { query } from "../utils/index";
-import { doc, getDoc } from "firebase/firestore";
+import { doc } from "firebase/firestore";
 import { CONSTANTS } from "../utils/index";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { database, auth } from "../firebase.config";
@@ -50,7 +50,7 @@ const IssuesPage = () => {
       query: query(searchData),
     });
   };
-  console.log("searchData", searchData);
+
   const handlePagination = (e) => {
     if (e.target.innerText === "1") {
       refetch({
