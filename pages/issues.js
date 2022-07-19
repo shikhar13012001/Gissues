@@ -18,8 +18,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import BookmarkContext from "../components/Issues/BookmarkContext";
 import Pagination from "@mui/material/Pagination";
 import Loading from "../components/Loading";
-
+import {useMediaQuery} from '@mui/material';
+import {FontSizes} from "../fonts"
 const IssuesPage = () => {
+  const isMobile = useMediaQuery('(max-width:700px)')
   const [searchData, setSearchData] = React.useState({});
   const [showFilter, setFilter] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -74,7 +76,7 @@ const IssuesPage = () => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Typography variant="h3" sx={{ m: 5 }}>
+      <Typography variant="h3" fontSize={FontSizes.subHeading} sx={{ m: 5 }}>
         Search Issues
       </Typography>
       <SearchContext.Provider
@@ -85,6 +87,7 @@ const IssuesPage = () => {
           <Button
             variant={showFilter ? "outlined" : "contained"}
             disableElevation
+            fullWidth={isMobile}
             sx={{ mb: 2 }}
             onClick={() => setFilter(!showFilter)}
           >

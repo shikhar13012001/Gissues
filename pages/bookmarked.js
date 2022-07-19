@@ -21,13 +21,13 @@ const Bookmarked = () => {
   });
 
   const bookmarks = value?.data()?.bookmarks || [];
-  console.log(bookmarks);
+
   const { data, loading: bookmarksloading } = useQuery(GET_BOOKMARKS, {
     variables: {
       ids: bookmarks,
     },
   });
-  console.log(data);
+
   if (loading || userLoading || bookmarksloading) return <Loading />;
   if (error) return <p>Error :(</p>;
 

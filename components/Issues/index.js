@@ -9,6 +9,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.config";
 import Image from "next/image";
 import { database } from "../../firebase.config";
+import { useMediaQuery } from "@mui/material";
+import { FontSizes } from "../../fonts";
 import {
   doc,
   getDoc,
@@ -21,6 +23,7 @@ import { CONSTANTS } from "../../utils";
 import BookmarkContext from "./BookmarkContext";
 import Loading from "../../components/Loading";
 const IssueCardComponent = ({ node }) => {
+  const isMobile = useMediaQuery("(max-width:700px)");
   const { bookmarks } = React.useContext(BookmarkContext);
   const [user, loading] = useAuthState(auth);
   const [bookmark, setBookmark] = React.useState(bookmarks?.includes(node.id));
@@ -68,7 +71,7 @@ const IssueCardComponent = ({ node }) => {
         mb: 4,
       }}
     >
-      <Grid item xs={12}>
+      <Grid item xs={12} flexWrap="wrap">
         <Typography
           variant="body1"
           component="div"
@@ -94,18 +97,24 @@ const IssueCardComponent = ({ node }) => {
           {new Date(updatedAt).toLocaleString()}
         </Typography>
         {labels.edges.map(({ node }, key) => {
-          return <Labels node={node} key={key} />;
+          return <Labels node={node} key={key} style={{mt:1,mb:1}} />;
         })}
         <Typography
           variant="h5"
-          sx={{ fontWeight: "bolder", fontFamily: "monospace" }}
+          sx={{ fontWeight: "bolder",mb:3,mt:3, fontFamily: "monospace" }}
+          fontSize={FontSizes.about}
         >
           #{number}: {title}
         </Typography>
         <Typography
           variant="body1"
           component="div"
-          sx={{ mt: 3, width: "80%", fontFamily: "monospace" }}
+          sx={{
+            mt: 3,
+            width: isMobile ? "100%" : "80%",
+            fontFamily: "monospace",
+          }}
+          fontSize={FontSizes.ProjectDescription}
         >
           {description}
         </Typography>
@@ -119,12 +128,13 @@ const IssueCardComponent = ({ node }) => {
           href={url}
           sx={{
             mt: 3,
-            backgroundColor: "#35d64d",
-            padding: "10px 15px",
+            backgroundColor: "#2dba5f",
+            padding: "5px 15px",
             color: "#fff",
             boxShadow: "none",
             mr: 2,
           }}
+          fullWidth={isMobile}
         >
           View Issue
         </Button>
@@ -136,11 +146,12 @@ const IssueCardComponent = ({ node }) => {
           disabled={!!!user}
           sx={{
             mt: 3,
-            padding: "10px 15px",
+            padding: "5px 15px",
             color: "black",
             boxShadow: "none",
             backgroundColor: "white",
           }}
+          fullWidth={isMobile}
           onClick={handleBookmark /* add bookmark */}
         >
           {bookmark ? "Bookmarked" : "Bookmark issue for later"}
