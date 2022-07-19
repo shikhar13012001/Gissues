@@ -1,9 +1,9 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
-import Next from "../../public/nextjs.png";
-import Apollo from "../../public/apollo.png";
-import Firebase from "../../public/firebase.png";
-import Graphql from "../../public/graphql.png";
+import Next from "../../public/files/nextjs.png";
+import Apollo from "../../public/files/apollo.png";
+import Firebase from "../../public/files/firebase.png";
+import Graphql from "../../public/files/graphql.png";
 import Image from "next/image";
 import { Box } from "@mui/material";
 const App = () => (

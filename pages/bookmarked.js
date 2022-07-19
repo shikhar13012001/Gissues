@@ -8,7 +8,7 @@ import { useQuery } from "@apollo/client";
 import { GET_BOOKMARKS } from "../graphql/queries";
 import { Container } from "@mui/material";
 import Issues from "../components/BookmarkedIssue";
-import BackPack from "../public/BackPack.png";
+import BackPack from "../public/files/BackPack.png";
 import Image from "next/image";
 import { Typography } from "@mui/material";
 import Loading from "../components/Loading";

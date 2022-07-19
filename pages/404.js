@@ -1,6 +1,6 @@
 import { Container, Typography } from "@mui/material";
 import React from "react";
-import Error from "../public/Error.png";
+import Error from "../public/files/Error.png";
 import Image from "next/image";
 
 const ErrorPage = () => {

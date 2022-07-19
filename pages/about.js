@@ -1,7 +1,7 @@
 import { Stack, Typography, Paper } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
-import Contact from "../public/Contact.png";
+import Contact from "../public/files/Contact.png";
 import Image from "next/image";
 import MarqueeComponent from "../components/About/index";
 const AboutUs = () => {
