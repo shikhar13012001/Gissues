@@ -12,6 +12,7 @@ import BackPack from "../public/files/Backpack.png";
 import Image from "next/image";
 import { Typography } from "@mui/material";
 import Loading from "../components/Loading";
+import Layout from "../components/Layout";
 const Bookmarked = () => {
   const [user, userLoading] = useAuthState(auth);
   const collectionRef =
@@ -32,6 +33,7 @@ const Bookmarked = () => {
   if (error) return <p>Error :(</p>;
 
   return (
+    <Layout title={"Bookmarked Issues"} description={"Bookmarked Issues"}>
     <Container
       sx={{
         width: "100%",
@@ -54,6 +56,7 @@ const Bookmarked = () => {
         </>
       )}
     </Container>
+    </Layout>
   );
 };
 

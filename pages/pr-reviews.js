@@ -10,6 +10,7 @@ import PullRequest from "../components/PullRequest";
 import Pagination from "@mui/material/Pagination";
 import GithubGraph from "../components/githubGraph";
 import Loading from "../components/Loading";
+import Layout from "../components/Layout";
 const PRReviews = () => {
   //   const [page, setPage] = React.useState(1);
   const [user] = useAuthState(auth);
@@ -43,43 +44,45 @@ const PRReviews = () => {
   };
   return (
     data?.user && (
-      <Container sx={{ mt: 4 }}>
-        <GithubGraph username={username} />
-        <Stack
-          direction="row"
-          spacing={3}
-          sx={{ display: "flex", alignItems: "center", mb: 4 }}
-        >
-          <Image
-            src={avatarUrl}
-            width={150}
-            height={150}
-            alt="avatar-url"
-            className="image-profile"
-          />
-          <Typography
-            variant="h3"
-            sx={{ fontWeight: "bold", fontFamily: "monospace" }}
+      <Layout title="Pull Requests">
+        <Container sx={{ mt: 4 }}>
+          <GithubGraph username={username} />
+          <Stack
+            direction="row"
+            spacing={3}
+            sx={{ display: "flex", alignItems: "center", mb: 4 }}
           >
-            @{username}
-            <br />
+            <Image
+              src={avatarUrl}
+              width={150}
+              height={150}
+              alt="avatar-url"
+              className="image-profile"
+            />
+            <Typography
+              variant="h3"
+              sx={{ fontWeight: "bold", fontFamily: "monospace" }}
+            >
+              @{username}
+              <br />
+            </Typography>
+          </Stack>
+          <Typography variant="h5" sx={{ fontFamily: "monospace" }}>
+            Issues: {totalCount}
           </Typography>
-        </Stack>
-        <Typography variant="h5" sx={{ fontFamily: "monospace" }}>
-          Issues: {totalCount}
-        </Typography>
-        {pullRequests?.map((pr) => (
-          <PullRequest key={pr.node.id} pr={pr} />
-        ))}
-        <Box sx={{ width: "100%", display: "grid", placeContent: "center" }}>
-          <Pagination
-            count={Math.ceil(totalCount / 10)}
-            variant="outlined"
-            shape="rounded"
-            onChange={handlePagination}
-          />
-        </Box>
-      </Container>
+          {pullRequests?.map((pr) => (
+            <PullRequest key={pr.node.id} pr={pr} />
+          ))}
+          <Box sx={{ width: "100%", display: "grid", placeContent: "center" }}>
+            <Pagination
+              count={Math.ceil(totalCount / 10)}
+              variant="outlined"
+              shape="rounded"
+              onChange={handlePagination}
+            />
+          </Box>
+        </Container>
+      </Layout>
     )
   );
 };

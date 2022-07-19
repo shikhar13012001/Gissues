@@ -18,10 +18,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import BookmarkContext from "../components/Issues/BookmarkContext";
 import Pagination from "@mui/material/Pagination";
 import Loading from "../components/Loading";
-import {useMediaQuery} from '@mui/material';
-import {FontSizes} from "../fonts"
+import { useMediaQuery } from "@mui/material";
+import { FontSizes } from "../fonts";
+import Layout from "../components/Layout";
 const IssuesPage = () => {
-  const isMobile = useMediaQuery('(max-width:700px)')
+  const isMobile = useMediaQuery("(max-width:700px)");
   const [searchData, setSearchData] = React.useState({});
   const [showFilter, setFilter] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -75,6 +76,7 @@ const IssuesPage = () => {
   const { edges } = search;
 
   return (
+    <Layout title={"Issues"}>
     <Box sx={{ width: "100%" }}>
       <Typography variant="h3" fontSize={FontSizes.subHeading} sx={{ m: 5 }}>
         Search Issues
@@ -125,6 +127,7 @@ const IssuesPage = () => {
         />
       </Box>
     </Box>
+    </Layout>
   );
 };
 export default IssuesPage;

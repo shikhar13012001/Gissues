@@ -4,8 +4,10 @@ import React from "react";
 import Contact from "../public/files/contact.png";
 import Image from "next/image";
 import MarqueeComponent from "../components/About/index";
+import Layout from "../components/Layout";
 const AboutUs = () => {
   return (
+    <Layout title={"About Us"}>
     <Container>
       <Typography variant="h1" sx={{ m: 5, fontWeight: "bold" }}>
         Gissues
@@ -53,6 +55,7 @@ const AboutUs = () => {
         This product is completely owned by the developers of @BlackBird.
       </Typography>
     </Container>
+    </Layout>
   );
 };
 export default AboutUs;
