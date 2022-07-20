@@ -1,9 +1,7 @@
 import React from "react";
 import {
-  Typography,
-  Grid,
-  Button,
-  Link,
+  Typography, 
+  Button, 
   Box,
   useMediaQuery,
 } from "@mui/material";

@@ -1,19 +1,17 @@
 import React from "react";
-import { Typography, Button, Stack, Box } from "@mui/material";
-import Link from "next/link";
-import { app, auth } from "../../firebase.config";
+import { Button, Stack } from "@mui/material";
+import { auth } from "../../firebase.config";
 import { BsGithub } from "react-icons/bs";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Image from "next/image";
-import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import {  GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import Popper from "./LogOutPopover";
 import Loading from "../../components/Loading";
 const AuthLinks = () => {
   const GithubAuth = new GithubAuthProvider();
   const handleGitHubLogin = async () => {
-    const credentials = await signInWithPopup(auth, GithubAuth);
+    await signInWithPopup(auth, GithubAuth);
   };
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   if (loading) return <Loading />;
 
   return (
