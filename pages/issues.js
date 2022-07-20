@@ -35,7 +35,7 @@ const IssuesPage = () => {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
   const { bookmarks } =
-    !!value && value.data() ? value.data() : { bookmarks: [] };
+    Boolean(value) && value.data() ? value.data() : { bookmarks: [] };
 
   const { loading, error, data, refetch, networkStatus } = useQuery(
     GET_ISSUES,
