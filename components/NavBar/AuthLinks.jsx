@@ -26,7 +26,7 @@ const AuthLinks = () => {
           onClick={handleGitHubLogin}
           disableElevation
         >
-          Login
+           Login
         </Button>
       )}
     </Stack>
