@@ -3,7 +3,7 @@ import { Button, Stack } from "@mui/material";
 import { auth } from "../../firebase.config";
 import { BsGithub } from "react-icons/bs";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {  GithubAuthProvider, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import Popper from "./LogOutPopover";
 import Loading from "../../components/Loading";
 const AuthLinks = () => {
@@ -26,7 +26,7 @@ const AuthLinks = () => {
           onClick={handleGitHubLogin}
           disableElevation
         >
-           Login
+          Login
         </Button>
       )}
     </Stack>

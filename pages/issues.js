@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Typography, 
-  Button, 
-  Box,
-  useMediaQuery,
-} from "@mui/material";
+import { Typography, Button, Box, useMediaQuery } from "@mui/material";
 import Issues from "../components/Issues";
 import { useQuery, NetworkStatus } from "@apollo/client";
 import { GET_ISSUES } from "../graphql/queries";
