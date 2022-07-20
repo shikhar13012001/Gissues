@@ -11,7 +11,7 @@ import Pagination from "@mui/material/Pagination";
 import GithubGraph from "../components/githubGraph";
 import Loading from "../components/Loading";
 import Layout from "../components/Layout";
-import {useRouter} from 'next/router'
+import { useRouter } from "next/router";
 const PRReviews = () => {
   //   const [page, setPage] = React.useState(1);
   const router = useRouter();
