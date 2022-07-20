@@ -18,7 +18,7 @@ const AuthLinks = () => {
   if (loading) return <Loading />;
   console.log(user);
   return (
-    <Stack direction={"row"} spacing={5}>
+    <Stack direction="row" spacing={5}>
       {user ? (
         <Popper user={user} />
       ) : (

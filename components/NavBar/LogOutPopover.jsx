@@ -16,7 +16,7 @@ export default function PopoverPopupState({ user }) {
   const handleLogout = async () => {
     await signOut(auth);
   };
-  
+
   const [value, loading, error] = useDocument(
     doc(database, CONSTANTS.COLLECTION_NAME, user.uid),
     {
@@ -65,16 +65,16 @@ export default function PopoverPopupState({ user }) {
           >
             <Paper sx={{ width: 300, height: 115, p: 2 }}>
               <Link href="/bookmarked">
-              <Button
-                disableRipple
-                disableElevation
-                fullWidth
-                variant="outlined"
-                color="primary"
-                sx={{ mb: 1 }}
-              >
-                {bookmarked} issues Bookmarked
-              </Button>
+                <Button
+                  disableRipple
+                  disableElevation
+                  fullWidth
+                  variant="outlined"
+                  color="primary"
+                  sx={{ mb: 1 }}
+                >
+                  {bookmarked} issues Bookmarked
+                </Button>
               </Link>
               <Button
                 disableRipple

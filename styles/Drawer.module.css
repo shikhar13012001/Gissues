@@ -1,4 +1,4 @@
-.Drawer{
+.Drawer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +7,6 @@
   text-align: center !important;
   margin-top: 30px !important;
   margin-bottom: 30px !important;
-  font-weight: bold!important;
-  cursor: pointer!important;
+  font-weight: bold !important;
+  cursor: pointer !important;
 }

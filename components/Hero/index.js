@@ -1,9 +1,8 @@
 import React from "react";
-import { Typography, Grid, Button, Link } from "@mui/material";
+import { Typography, Grid, Button, Link, useMediaQuery } from "@mui/material";
 import { BsTerminal } from "react-icons/bs";
 import { FaCodeBranch } from "react-icons/fa";
 import CodeCard from "../codeCard";
-import { useMediaQuery } from "@mui/material";
 import { FontSizes } from "../../fonts";
 const HeroSection = () => {
   const isMobile = useMediaQuery("(max-width:800px)");
