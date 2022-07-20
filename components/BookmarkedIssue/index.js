@@ -6,9 +6,8 @@ import { VscIssues } from "react-icons/vsc";
 import { MdUpdate } from "react-icons/md";
 import { BsBookmarkCheckFill } from "react-icons/bs";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase.config";
+import { auth, database } from "../../firebase.config";
 import Image from "next/image";
-import { database } from "../../firebase.config";
 import {
   doc,
   getDoc,
@@ -113,7 +112,7 @@ const IssueCardComponent = ({ node }) => {
           variant="contained"
           color="primary"
           endIcon={<VscIssues />}
-          component={"a"}
+          component="a"
           href={url}
           sx={{
             mt: 3,
@@ -131,7 +130,7 @@ const IssueCardComponent = ({ node }) => {
           color="primary"
           endIcon={bookmark ? <BsBookmarkCheckFill /> : <BiBookmarks />}
           disableElevation
-          disabled={!!!user}
+          disabled={!user}
           sx={{
             mt: 3,
             padding: "10px 15px",
