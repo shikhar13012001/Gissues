@@ -12,11 +12,11 @@ const AuthLinks = () => {
   const GithubAuth = new GithubAuthProvider();
   const handleGitHubLogin = async () => {
     const credentials = await signInWithPopup(auth, GithubAuth);
-    console.log(credentials.user);
+    
   };
   const [user, loading, error] = useAuthState(auth);
   if (loading) return <Loading />;
-  console.log(user);
+  
   return (
     <Stack direction={"row"} spacing={5}>
       {user ? (
