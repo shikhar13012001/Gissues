@@ -12,13 +12,12 @@ const AuthLinks = () => {
   const GithubAuth = new GithubAuthProvider();
   const handleGitHubLogin = async () => {
     const credentials = await signInWithPopup(auth, GithubAuth);
-    
   };
   const [user, loading, error] = useAuthState(auth);
   if (loading) return <Loading />;
-  
+
   return (
-    <Stack direction={"row"} spacing={5}>
+    <Stack direction="row" spacing={5}>
       {user ? (
         <Popper user={user} />
       ) : (
