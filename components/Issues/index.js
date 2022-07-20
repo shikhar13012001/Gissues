@@ -143,7 +143,7 @@ const IssueCardComponent = ({ node }) => {
           color="primary"
           endIcon={bookmark ? <BsBookmarkCheckFill /> : <BiBookmarks />}
           disableElevation
-          disabled={!!!user}
+          disabled={!user}
           sx={{
             mt: 3,
             padding: "5px 15px",
