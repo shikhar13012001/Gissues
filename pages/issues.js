@@ -1,24 +1,28 @@
 import React from "react";
-import { Typography, Grid, Button, Link, Box } from "@mui/material";
+import {
+  Typography,
+  Grid,
+  Button,
+  Link,
+  Box,
+  useMediaQuery,
+} from "@mui/material";
 import Issues from "../components/Issues";
-import { useQuery } from "@apollo/client";
+import { useQuery, NetworkStatus } from "@apollo/client";
 import { GET_ISSUES } from "../graphql/queries";
-import { NetworkStatus } from "@apollo/client";
 import SearchIssues from "../components/Issues/SearchComponent";
 import LabelSelect from "../components/Issues/LabelSelect";
 import SearchContext from "../components/Issues/IssueContext";
 import LanguageSelect from "../components/Issues/LanguageSelect";
 import { RiFilter2Fill } from "react-icons/ri";
-import { query } from "../utils/index";
+import { query, CONSTANTS } from "../utils/index";
 import { doc } from "firebase/firestore";
-import { CONSTANTS } from "../utils/index";
 import { useDocument } from "react-firebase-hooks/firestore";
 import { database, auth } from "../firebase.config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import BookmarkContext from "../components/Issues/BookmarkContext";
 import Pagination from "@mui/material/Pagination";
 import Loading from "../components/Loading";
-import { useMediaQuery } from "@mui/material";
 import { FontSizes } from "../fonts";
 import Layout from "../components/Layout";
 const IssuesPage = () => {
@@ -76,16 +80,15 @@ const IssuesPage = () => {
   const { edges } = search;
 
   return (
-    <Layout title={"Issues"}>
-    <Box sx={{ width: "100%" }}>
-      <Typography variant="h3" fontSize={FontSizes.subHeading} sx={{ m: 5 }}>
-        Search Issues
-      </Typography>
-      <SearchContext.Provider
-        value={{ searchData, setSearchData, handleSearch }}
-      >
-        <SearchIssues />
-        {
+    <Layout title="Issues">
+      <Box sx={{ width: "100%" }}>
+        <Typography variant="h3" fontSize={FontSizes.subHeading} sx={{ m: 5 }}>
+          Search Issues
+        </Typography>
+        <SearchContext.Provider
+          value={{ searchData, setSearchData, handleSearch }}
+        >
+          <SearchIssues />
           <Button
             variant={showFilter ? "outlined" : "contained"}
             disableElevation
@@ -95,38 +98,37 @@ const IssuesPage = () => {
           >
             <RiFilter2Fill /> {showFilter ? "HideFilters" : "Filter Issues"}
           </Button>
-        }
-        {showFilter && (
-          <React.Fragment>
-            <LanguageSelect />
-            <LabelSelect />
-            <Button
-              variant="contained"
-              endIcon={<RiFilter2Fill />}
-              disableElevation
-              sx={{ mt: 2, mb: 2 }}
-              onClick={handleSearch}
-            >
-              Apply filters
-            </Button>
-          </React.Fragment>
-        )}
-      </SearchContext.Provider>
-      <BookmarkContext.Provider value={{ bookmarks }}>
-        {edges.map(({ node }, key) => {
-          return <Issues node={node} key={key} />;
-        })}
-      </BookmarkContext.Provider>
-      <Box sx={{ width: "100%", display: "grid", placeContent: "center" }}>
-        <Pagination
-          count={Math.ceil(totalCount / 10)}
-          variant="outlined"
-          shape="rounded"
-          onChange={handlePagination}
-          page={page}
-        />
+          {showFilter && (
+            <>
+              <LanguageSelect />
+              <LabelSelect />
+              <Button
+                variant="contained"
+                endIcon={<RiFilter2Fill />}
+                disableElevation
+                sx={{ mt: 2, mb: 2 }}
+                onClick={handleSearch}
+              >
+                Apply filters
+              </Button>
+            </>
+          )}
+        </SearchContext.Provider>
+        <BookmarkContext.Provider value={{ bookmarks }}>
+          {edges.map(({ node }, key) => {
+            return <Issues node={node} key={key} />;
+          })}
+        </BookmarkContext.Provider>
+        <Box sx={{ width: "100%", display: "grid", placeContent: "center" }}>
+          <Pagination
+            count={Math.ceil(totalCount / 10)}
+            variant="outlined"
+            shape="rounded"
+            onChange={handlePagination}
+            page={page}
+          />
+        </Box>
       </Box>
-    </Box>
     </Layout>
   );
 };
