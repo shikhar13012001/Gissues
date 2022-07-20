@@ -10,8 +10,7 @@ import Autocomplete, { autocompleteClasses } from "@mui/material/Autocomplete";
 // import Button from "@mui/material/Button";
 import InputBase from "@mui/material/InputBase";
 import Chip from "@mui/material/Chip";
-import { Box } from "@mui/material";
-import { ButtonBase } from "@mui/material";
+import { Box, ButtonBase } from "@mui/material";
 import SearchContext from "./IssueContext";
 
 const StyledAutocompletePopper = styled("div")(({ theme }) => ({

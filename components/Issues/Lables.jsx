@@ -1,7 +1,7 @@
 import React from "react";
 import { Chip } from "@mui/material";
 
-const Labels = ({ node, onClick,style }) => {
+const Labels = ({ node, onClick, style }) => {
   const { name, color } = node;
   return (
     <Chip
@@ -12,7 +12,7 @@ const Labels = ({ node, onClick,style }) => {
         fontSize: 10,
         mr: 2,
         fontWeight: "bold",
-        ...style
+        ...style,
       }}
       size="small"
     />

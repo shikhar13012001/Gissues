@@ -5,7 +5,7 @@ import Image from "next/image";
 import Layout from "../components/Layout";
 const ErrorPage = () => {
   return (
-    <Layout title={"404 Not Found"} description={"This Page does not exist"}>
+    <Layout title="404 Not Found" description="This Page does not exist">
       <Container
         sx={{
           display: "flex",

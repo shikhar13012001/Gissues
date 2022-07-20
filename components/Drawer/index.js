@@ -42,8 +42,14 @@ export default function SwipeableTemporaryDrawer() {
       <Typography
         variant="h2"
         fontSize={FontSizes.Heading}
- 
-        sx={{ width:'100%',fontWeight: "bold",display:'flex',alignItems:'center',justifyContent:'center',mt:5 }}
+        sx={{
+          width: "100%",
+          fontWeight: "bold",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          mt: 5,
+        }}
         textAlign="center"
       >
         <DiGit style={{ color: "red" }} size={100} /> Gissues
