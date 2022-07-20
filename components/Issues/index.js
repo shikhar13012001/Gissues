@@ -1,4 +1,4 @@
-import { Typography, Grid, Button } from "@mui/material";
+import { Typography, Grid, Button, useMediaQuery } from "@mui/material";
 import React from "react";
 import Labels from "./Lables";
 import { BiGitPullRequest, BiBookmarks } from "react-icons/bi";
@@ -6,10 +6,8 @@ import { VscIssues } from "react-icons/vsc";
 import { MdUpdate } from "react-icons/md";
 import { BsBookmarkCheckFill } from "react-icons/bs";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../firebase.config";
+import { auth, database } from "../../firebase.config";
 import Image from "next/image";
-import { database } from "../../firebase.config";
-import { useMediaQuery } from "@mui/material";
 import { FontSizes } from "../../fonts";
 import {
   doc,
@@ -97,11 +95,11 @@ const IssueCardComponent = ({ node }) => {
           {new Date(updatedAt).toLocaleString()}
         </Typography>
         {labels.edges.map(({ node }, key) => {
-          return <Labels node={node} key={key} style={{mt:1,mb:1}} />;
+          return <Labels node={node} key={key} style={{ mt: 1, mb: 1 }} />;
         })}
         <Typography
           variant="h5"
-          sx={{ fontWeight: "bolder",mb:3,mt:3, fontFamily: "monospace" }}
+          sx={{ fontWeight: "bolder", mb: 3, mt: 3, fontFamily: "monospace" }}
           fontSize={FontSizes.about}
         >
           #{number}: {title}
@@ -124,7 +122,7 @@ const IssueCardComponent = ({ node }) => {
           variant="contained"
           color="primary"
           endIcon={<VscIssues />}
-          component={"a"}
+          component="a"
           href={url}
           sx={{
             mt: 3,
