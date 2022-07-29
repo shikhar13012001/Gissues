@@ -1,11 +1,11 @@
-import { Container } from "@mui/material"; 
+import { Container } from "@mui/material";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase.config";
-import Loading from "../Loading"
+import Loading from "../Loading";
 const Stats = () => {
- const [user,loading]=useAuthState(auth);
- if (loading) return <Loading />;
+  const [user, loading] = useAuthState(auth);
+  if (loading) return <Loading />;
   return (
     <Container>
       {/* eslint-disable-next-line @next/next/no-img-element */}

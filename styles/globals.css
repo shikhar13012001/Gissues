@@ -19,7 +19,7 @@ a {
   font-family: "Space Grotesk", sans-serif;
   box-sizing: border-box;
 }
-.SpaceFont{
+.SpaceFont {
   font-family: "Space Grotesk", sans-serif !important;
 }
 .labels {
@@ -48,7 +48,6 @@ div.about-us-image {
   display: none;
 }
 
-
-a{
-  text-decoration: none!important;;  
+a {
+  text-decoration: none !important;
 }
