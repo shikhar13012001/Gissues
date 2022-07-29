@@ -1,9 +1,6 @@
 import Stats from "../components/Stats";
 
-
 const StatsPage = () => {
-    return (
-        <Stats />
-    )
-}
+  return <Stats />;
+};
 export default StatsPage;

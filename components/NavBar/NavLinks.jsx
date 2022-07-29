@@ -6,7 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 const NavLinks = () => {
   const [user, loading] = useAuthState(auth);
   return (
-    <Stack direction={"row"} spacing={8}>
+    <Stack direction="row" spacing={8}>
       <Link href="/">
         <a>Home</a>
       </Link>
