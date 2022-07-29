@@ -21,6 +21,11 @@ const NavLinks = () => {
           <a>Pull Requests</a>
         </Link>
       )}
+      {user && !loading && (
+        <Link href="/stats">
+          <a>Stats</a>
+        </Link>
+      )}
     </Stack>
   );
 };

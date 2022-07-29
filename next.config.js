@@ -3,7 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   // image config
   images: {
-    domains: ["avatars.githubusercontent.com", "images.unsplash.com"],
+    domains: [
+      "avatars.githubusercontent.com",
+      "images.unsplash.com",
+      "metrics.lecoq.io",
+    ],
   },
   // env
   env: {

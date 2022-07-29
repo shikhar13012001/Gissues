@@ -10,6 +10,7 @@ const AuthLinks = () => {
   const GithubAuth = new GithubAuthProvider();
   const handleGitHubLogin = async () => {
     await signInWithPopup(auth, GithubAuth);
+  //  console.log(creds.user.uid);
   };
   const [user, loading] = useAuthState(auth);
   if (loading) return <Loading />;
