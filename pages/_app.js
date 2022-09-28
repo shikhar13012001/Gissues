@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import "../styles/globals.css";
 import "../styles/prism.css";
 import NavBar from "../components/NavBar";
@@ -34,6 +34,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <Container sx={{ mt: 3 }}>
       <NavBar />
+
       <ApolloProvider client={client}>
         <Component {...pageProps} />
       </ApolloProvider>
