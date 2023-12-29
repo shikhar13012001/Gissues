@@ -1,6 +1,6 @@
-import Stats from "../components/Stats";
+import Stats from '../components/Stats'
 
 const StatsPage = () => {
-  return <Stats />;
-};
-export default StatsPage;
+  return <Stats />
+}
+export default StatsPage

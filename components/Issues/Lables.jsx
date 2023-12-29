@@ -1,21 +1,21 @@
-import React from "react";
-import { Chip } from "@mui/material";
+import React from 'react'
+import { Chip } from '@mui/material'
 
-const Labels = ({ node, onClick,style }) => {
-  const { name, color } = node;
+const Labels = ({ node, onClick, style }) => {
+  const { name, color } = node
   return (
     <Chip
       label={name}
       sx={{
         bgcolor: `#${color}`,
-        color: "white",
+        color: 'white',
         fontSize: 10,
         mr: 2,
-        fontWeight: "bold",
+        fontWeight: 'bold',
         ...style
       }}
-      size="small"
+      size='small'
     />
-  );
-};
-export default Labels;
+  )
+}
+export default Labels

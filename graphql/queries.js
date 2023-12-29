@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client'
 
 export const GET_VIEWER = gql`
   query {
@@ -7,7 +7,7 @@ export const GET_VIEWER = gql`
       url
     }
   }
-`;
+`
 
 export const GET_ISSUES = gql`
   query SearchIssues($query: String!, $after: String) {
@@ -52,7 +52,7 @@ export const GET_ISSUES = gql`
       }
     }
   }
-`;
+`
 
 export const GET_PULL_REQUESTS = gql`
   query MyGetPullRequests($user: String!, $after: String) {
@@ -85,7 +85,7 @@ export const GET_PULL_REQUESTS = gql`
       }
     }
   }
-`;
+`
 
 export const GET_BOOKMARKS = gql`
   query MyGetBookmarks($ids: [ID!]!) {
@@ -121,4 +121,4 @@ export const GET_BOOKMARKS = gql`
       }
     }
   }
-`;
+`

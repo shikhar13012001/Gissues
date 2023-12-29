@@ -1,5 +1,5 @@
-import React from "react";
-import CodeCard from "./components/CodeCard";
+import React from 'react'
+import CodeCard from './components/CodeCard'
 
 const codeToDisplayInCard = `const terminal = StripeTerminal.create({
   onFetchConnectionToken: server.fetchConnectionToken,
@@ -19,8 +19,8 @@ const cart = {
   currency: 'usd',
 };
 
-terminal.setReaderDisplay({ type: 'cart', cart });`;
+terminal.setReaderDisplay({ type: 'cart', cart });`
 const CodeCardComponent = () => {
-  return <CodeCard code={codeToDisplayInCard} language={"javascript"} />;
-};
-export default CodeCardComponent;
+  return <CodeCard code={codeToDisplayInCard} language='javascript' />
+}
+export default CodeCardComponent
