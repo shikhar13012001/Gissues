@@ -1,17 +1,17 @@
-import React from "react";
-import Prism from "prismjs";
+import React from 'react'
+import Prism from 'prismjs'
 
 class CodeCard extends React.Component {
-  componentDidMount() {
-    Prism.highlightAll();
+  componentDidMount () {
+    Prism.highlightAll()
   }
 
-  render() {
+  render () {
     return (
-      <div className="space">
-        <div className="card">
-          <div className="card-shine" />
-          <div className="code-snippet">
+      <div className='space'>
+        <div className='card'>
+          <div className='card-shine' />
+          <div className='code-snippet'>
             <pre>
               <code className={`prism language-${this.props.language}`}>
                 {this.props.code}
@@ -20,8 +20,8 @@ class CodeCard extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default CodeCard;
+export default CodeCard
