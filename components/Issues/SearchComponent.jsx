@@ -23,14 +23,12 @@ export default function SearchIssues() {
         p: "2px 4px",
         display: "flex",
         alignItems: "center",
-        mb: 5,
+        mb: 2,
         border: "2px solid black",
       }}
       onSubmit={handleSearch}
     >
-      <IconButton sx={{ p: "10px" }} aria-label="menu">
-        <MenuIcon />
-      </IconButton>
+      
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Issues"

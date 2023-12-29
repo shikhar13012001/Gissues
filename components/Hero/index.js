@@ -50,6 +50,7 @@ const HeroSection = () => {
               padding: "10px 15px",
               color: "#fff",
             }}
+            disableElevation={true}
           >
             Get Started
           </Button>

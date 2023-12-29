@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Typography, 
-  Button, 
-  Box,
-  useMediaQuery,
-} from "@mui/material";
+import { Typography, Button, Stack, Box, useMediaQuery } from "@mui/material";
 import Issues from "../components/Issues";
 import { useQuery, NetworkStatus } from "@apollo/client";
 import { GET_ISSUES } from "../graphql/queries";
@@ -80,38 +75,32 @@ const IssuesPage = () => {
   return (
     <Layout title="Issues">
       <Box sx={{ width: "100%" }}>
-        <Typography variant="h3" fontSize={FontSizes.subHeading} sx={{ m: 5 }}>
+        <Typography variant="h2" sx={{ m: 5 }}>
           Search Issues
         </Typography>
         <SearchContext.Provider
           value={{ searchData, setSearchData, handleSearch }}
         >
           <SearchIssues />
-          <Button
-            variant={showFilter ? "outlined" : "contained"}
-            disableElevation
-            fullWidth={isMobile}
-            sx={{ mb: 2 }}
-            onClick={() => setFilter(!showFilter)}
-          >
-            <RiFilter2Fill /> {showFilter ? "HideFilters" : "Filter Issues"}
-          </Button>
-          {showFilter && (
-            <>
-              <LanguageSelect />
+
+          {
+            <Stack direction={{xs:"column", sm:"column",lg:"row"}}sx={{gap:2}}  alignItems={"center"}>
               <LabelSelect />
+              <LanguageSelect />
               <Button
                 variant="contained"
                 endIcon={<RiFilter2Fill />}
                 disableElevation
                 sx={{ mt: 2, mb: 2 }}
+                fullWidth={isMobile}
                 onClick={handleSearch}
               >
                 Apply filters
               </Button>
-            </>
-          )}
+            </Stack>
+          }
         </SearchContext.Provider>
+        <div style={{marginBottom:10}} />
         <BookmarkContext.Provider value={{ bookmarks }}>
           {edges.map(({ node }, key) => {
             return <Issues node={node} key={key} />;

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useTheme, styled } from "@mui/material/styles";
 import Popper from "@mui/material/Popper";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
-import SettingsIcon from "@mui/icons-material/Settings";
+import {FaTags} from "react-icons/fa"
 import CloseIcon from "@mui/icons-material/Close";
 import DoneIcon from "@mui/icons-material/Done";
 import Autocomplete, { autocompleteClasses } from "@mui/material/Autocomplete";
@@ -142,7 +142,7 @@ export default function GitHubLabel() {
   const id = open ? "github-label" : undefined;
 
   return (
-    <Box sx={{ mb: 4 }}>
+    <Box  >
       <Box sx={{ fontSize: 13 }}>
         <Button
           aria-describedby={id}
@@ -151,11 +151,10 @@ export default function GitHubLabel() {
           sx={{ color: "black" }}
         >
           <span>
-            {" "}
-            Labels <SettingsIcon />{" "}
+          
+           <FaTags /> 
           </span>
-        </Button>{" "}
-        <br />
+        </Button> 
         {value.map((label) => (
           <Chip
             key={label.name}
@@ -379,4 +378,9 @@ const labels = [
     color: "#d876e3",
     description: "Further information is requested",
   },
+  {
+    name:"hacktoberfest",
+    color:"#ff0000",
+    description:"Hacktoberfest topic"
+  }
 ];

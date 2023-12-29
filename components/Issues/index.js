@@ -2,6 +2,7 @@ import { Typography, Grid, Button, useMediaQuery } from "@mui/material";
 import React from "react";
 import Labels from "./Lables";
 import { BiGitPullRequest, BiBookmarks } from "react-icons/bi";
+import { AiFillStar } from "react-icons/ai";
 import { VscIssues } from "react-icons/vsc";
 import { MdUpdate } from "react-icons/md";
 import { BsBookmarkCheckFill } from "react-icons/bs";
@@ -50,13 +51,13 @@ const IssueCardComponent = ({ node }) => {
       // console.error("Error adding document: ", e);
     }
   };
-
   const { repository, url, title, number, labels, updatedAt } = node;
-
+   
   if (!repository) {
     return null;
   }
-  const { owner, name, description } = repository;
+  const { owner, name, description, stargazers } = repository;
+  const { totalCount } = stargazers;
   return (
     <Grid
       container
@@ -93,6 +94,20 @@ const IssueCardComponent = ({ node }) => {
           />
           {" \t"}@{owner.login}/{name} <MdUpdate />{" "}
           {new Date(updatedAt).toLocaleString()}
+        </Typography>
+        <Typography
+          variant="body1"
+          component="div"
+          color="GrayText"
+          sx={{
+            fontWeight: "bolder",
+            fontFamily: "monospace",
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+          }}
+        >
+          <AiFillStar /> {totalCount}
         </Typography>
         {labels.edges.map(({ node }, key) => {
           return <Labels node={node} key={key} style={{ mt: 1, mb: 1 }} />;

@@ -14,7 +14,7 @@ export default function FreeSolo() {
     setSearchData((prev) => ({ ...prev, language: e.target.value }));
   };
   return (
-    <Stack spacing={2} sx={{ width: 300 }}>
+    <Stack spacing={2} sx={{ minWidth: 300 }}>
       <Autocomplete
         freeSolo
         id="free-solo-2-demo"
@@ -23,7 +23,9 @@ export default function FreeSolo() {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Search input"
+            sx={{ width: "100%" }}
+            fullWidth={true}
+            label="Search Language (optional, default JS)"
             InputProps={{
               ...params.InputProps,
               type: "search",

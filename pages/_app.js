@@ -2,6 +2,8 @@ import { Container, Box } from "@mui/material";
 import "../styles/globals.css";
 import "../styles/prism.css";
 import NavBar from "../components/NavBar";
+import { createTheme, responsiveFontSizes, ThemeProvider  } from "@mui/material/styles";
+
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import {
   ApolloClient,
@@ -10,6 +12,9 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 function MyApp({ Component, pageProps }) {
   const URI = "https://api.github.com/graphql";
   const httpLink = createHttpLink({
@@ -32,13 +37,15 @@ function MyApp({ Component, pageProps }) {
   });
 
   return (
-    <Container sx={{ mt: 3 }}>
-      <NavBar />
+    <ThemeProvider theme={theme}>
+      <Container sx={{ mt: 3 }}>
+        <NavBar />
 
-      <ApolloProvider client={client}>
-        <Component {...pageProps} />
-      </ApolloProvider>
-    </Container>
+        <ApolloProvider client={client}>
+          <Component {...pageProps} />
+        </ApolloProvider>
+      </Container>
+    </ThemeProvider>
   );
 }
 
